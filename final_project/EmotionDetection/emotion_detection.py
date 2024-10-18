@@ -7,24 +7,27 @@ def emotion_detector(text_to_analyze):
     INPUT_JSON = { "raw_document": { "text": text_to_analyze } }
     # Response
     response = requests.post(URL, json = INPUT_JSON, headers=HEADERS)
-    # JSON convert
-    json_result = json.loads(response.text)
-    json_emotions = json_result['emotionPredictions'][0]['emotion']
-    # Get scores
-    anger_score = json_emotions['anger']
-    disgust_score = json_emotions['disgust']
-    fear_score = json_emotions['fear']
-    joy_score = json_emotions['joy']
-    sadness_score = json_emotions['sadness']
-    # Dominant emotion
-    emotions = ['anger', 'disgust', 'fear', 'joy', 'sadness']
-    name_dominant = False
-    for emotion in emotions:
-        if not name_dominant:
-            name_dominant = emotion
-            continue
-        if json_emotions[emotion] > json_emotions[name_dominant]:
-            name_dominant = emotion
+    if response.status_code == 400:
+        anger_score = disgust_score = fear_score = joy_score = sadness_score = name_dominant = None
+    else:
+        # JSON convert
+        json_result = json.loads(response.text)
+        json_emotions = json_result['emotionPredictions'][0]['emotion']
+        # Get scores
+        anger_score = json_emotions['anger']
+        disgust_score = json_emotions['disgust']
+        fear_score = json_emotions['fear']
+        joy_score = json_emotions['joy']
+        sadness_score = json_emotions['sadness']
+        # Dominant emotion
+        emotions = ['anger', 'disgust', 'fear', 'joy', 'sadness']
+        name_dominant = False
+        for emotion in emotions:
+            if not name_dominant:
+                name_dominant = emotion
+                continue
+            if json_emotions[emotion] > json_emotions[name_dominant]:
+                name_dominant = emotion
     # Output
     json_output = {
         'anger': anger_score,

@@ -11,12 +11,15 @@ def emotion_detection():
     response = emotion_detector(text_to_analyze)
     # Get the list and the dominant emotion
     list_response = []
-    dominant_emotion = ""
+    dominant_emotion = None
     for key, value in response.items():
         if key == "dominant_emotion":
             dominant_emotion = value
         else:
             list_response.append(f"'{key}': {value}")
+    # Check dominant emotion
+    if dominant_emotion == None:
+        return "Invalid text! Please try again!"
     # Convert list to text
     txt_response = ', '.join(list_response)
     # Output

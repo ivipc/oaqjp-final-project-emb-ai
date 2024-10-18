@@ -27,3 +27,13 @@ emotion_detector("I hate working long hours.")
 ```bash
 python3.11 test_emotion_detection.py
 ```
+
+- [x] Task 6: Web deployment of the application using Flask
+```bash
+python3.11 server.py
+```
+
+- [X] Task 7: Incorporate Error handling
+```bash
+python3.11 server.py
+```

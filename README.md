@@ -1,6 +1,9 @@
 # Repository for final project
 
 - [x] Task 1: Fork and Clone the project repository
+```bash
+git clone https://USER:TOKEN@github.com/ivipc/oaqjp-final-project-emb-ai.git
+```
 
 - [x] Task 2: Create an emotion detection application using the Watson NLP library
 ```py
@@ -36,4 +39,10 @@ python3.11 server.py
 - [X] Task 7: Incorporate Error handling
 ```bash
 python3.11 server.py
+```
+
+- [x] Task 8: Run static code analysis
+```bash
+pylint server.py
+# Your code has been rated at 10.00/10
 ```

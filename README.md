@@ -8,3 +8,10 @@
 from emotion_detection import emotion_detector
 emotion_detector("I love this new technology.")
 ```
+
+- [x] Task 3: Format the output of the application
+```py
+# python3.11
+from emotion_detection import emotion_detector
+emotion_detector("I am so happy I am doing this.")
+```
